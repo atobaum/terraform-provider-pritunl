@@ -704,7 +704,18 @@ func (c client) CreateUser(newUser User) (*User, error) {
 	}
 
 	if len(users) > 0 {
-		return &users[0], nil
+		user := users[0]
+		// FIXME: fix me
+		if user.DnsServers == nil {
+			user.DnsServers = make([]string, 0)
+		}
+		if user.NetworkLinks == nil {
+			user.NetworkLinks = make([]string, 0)
+		}
+		if user.PortForwarding == nil {
+			user.PortForwarding = make([]map[string]interface{}, 0)
+		}
+		return &user, nil
 	}
 
 	return nil, fmt.Errorf("empty users response")
