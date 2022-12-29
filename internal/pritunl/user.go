@@ -53,7 +53,7 @@ func NewPin(value string) Pin {
 	}
 }
 
-func (pin *Pin) MarshalJSON() ([]byte, error) {
+func (pin Pin) MarshalJSON() ([]byte, error) {
 	if pin.Value != "" {
 		if !pin.IsSet {
 			return nil, errors.New("invalid pin: Value is set but IsSet is false")
@@ -63,7 +63,7 @@ func (pin *Pin) MarshalJSON() ([]byte, error) {
 	return json.Marshal(pin.IsSet)
 }
 
-func (pin *Pin) UnmarshalJSON(data []byte) error {
+func (pin Pin) UnmarshalJSON(data []byte) error {
 	var i interface{}
 	err := json.Unmarshal(data, &i)
 	if err != nil {

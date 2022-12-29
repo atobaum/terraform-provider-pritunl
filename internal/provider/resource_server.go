@@ -3,13 +3,14 @@ package provider
 import (
 	"context"
 	"fmt"
-	"github.com/disc/terraform-provider-pritunl/internal/pritunl"
+	"net"
+	"strings"
+
+	"github.com/atobaum/terraform-provider-pritunl/internal/pritunl"
 	"github.com/hashicorp/go-cty/cty"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"net"
-	"strings"
 )
 
 func resourceServer() *schema.Resource {
