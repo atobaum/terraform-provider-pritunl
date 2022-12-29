@@ -305,6 +305,13 @@ func resourceUserCreate(_ context.Context, d *schema.ResourceData, meta interfac
 		groups = append(groups, v.(string))
 	}
 
+	var pin pritunl.Pin
+	if v, ok := d.GetOk("pin"); ok {
+		pin = pritunl.NewPin(v.(string))
+	} else {
+		pin = pritunl.Pin{IsSet: false}
+	}
+
 	userData := pritunl.User{
 		Name:            d.Get("name").(string),
 		Organization:    d.Get("organization_id").(string),
@@ -313,6 +320,7 @@ func resourceUserCreate(_ context.Context, d *schema.ResourceData, meta interfac
 		DnsSuffix:       d.Get("dns_suffix").(string),
 		Disabled:        d.Get("disabled").(bool),
 		NetworkLinks:    networkLinks,
+		Pin:             pin,
 		PortForwarding:  portForwarding,
 		Email:           d.Get("email").(string),
 		ClientToClient:  d.Get("client_to_client").(bool),
@@ -327,6 +335,34 @@ func resourceUserCreate(_ context.Context, d *schema.ResourceData, meta interfac
 	}
 
 	d.SetId(user.ID)
+	d.Set("name", user.Name)
+	d.Set("auth_type", user.AuthType)
+	d.Set("dns_servers", user.DnsServers)
+	d.Set("dns_suffix", user.DnsSuffix)
+	d.Set("disabled", user.Disabled)
+	d.Set("network_links", user.NetworkLinks)
+	d.Set("port_forwarding", user.PortForwarding)
+	d.Set("email", user.Email)
+	d.Set("client_to_client", user.ClientToClient)
+	d.Set("mac_addresses", user.MacAddresses)
+	d.Set("bypass_secondary", user.BypassSecondary)
+	d.Set("organization_id", user.Organization)
+	d.Set("pin_set", user.Pin.IsSet)
+	d.Set("otp_secret", user.OtpSecret)
+
+	if len(user.Groups) > 0 {
+		groupsList := make([]string, 0)
+
+		for _, group := range user.Groups {
+			groupsList = append(groupsList, group)
+		}
+
+		declaredGroups, ok := d.Get("groups").([]interface{})
+		if !ok {
+			return diag.Errorf("failed to parse groups for the user: %s", user.Name)
+		}
+		d.Set("groups", matchStringEntitiesWithSchema(groupsList, declaredGroups))
+	}
 
 	return nil
 }
