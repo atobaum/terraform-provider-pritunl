@@ -25,7 +25,7 @@ func main() {
 	}
 
 	if debugMode {
-		err := plugin.Debug(context.Background(), "registry.terraform.io/disc/pritunl", opts)
+		err := plugin.Debug(context.Background(), "registry.terraform.io/atobaum/pritunl", opts)
 		if err != nil {
 			log.Fatal(err.Error())
 		}

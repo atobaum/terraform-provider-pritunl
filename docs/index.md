@@ -15,7 +15,7 @@ terraform {
   required_providers {
     pritunl = {
       version = "~> 0.0.1"
-      source  = "disc/pritunl"
+      source  = "atobaum/pritunl"
     }
   }
 }

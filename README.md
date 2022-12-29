@@ -7,14 +7,14 @@
 
 # Terraform Provider for Pritunl VPN Server
 
-[![Release](https://img.shields.io/github/v/release/disc/terraform-provider-pritunl)](https://github.com/disc/terraform-provider-pritunl/releases)
-[![Registry](https://img.shields.io/badge/registry-doc%40latest-lightgrey?logo=terraform)](https://registry.terraform.io/providers/disc/pritunl/latest/docs)
-[![License](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/disc/terraform-provider-pritunl/blob/master/LICENSE)  
-[![Go Report Card](https://goreportcard.com/badge/github.com/disc/terraform-provider-pritunl)](https://goreportcard.com/report/github.com/disc/terraform-provider-pritunl)
+[![Release](https://img.shields.io/github/v/release/atobaum/terraform-provider-pritunl)](https://github.com/atobaum/terraform-provider-pritunl/releases)
+[![Registry](https://img.shields.io/badge/registry-doc%40latest-lightgrey?logo=terraform)](https://registry.terraform.io/providers/atobaum/pritunl/latest/docs)
+[![License](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/atobaum/terraform-provider-pritunl/blob/master/LICENSE)  
+[![Go Report Card](https://goreportcard.com/badge/github.com/atobaum/terraform-provider-pritunl)](https://goreportcard.com/report/github.com/atobaum/terraform-provider-pritunl)
 
 - Website: https://www.terraform.io
 - Pritunl VPN Server: https://pritunl.com/
-- Provider: [disc/pritunl](https://registry.terraform.io/providers/disc/pritunl/latest)
+- Provider: [atobaum/pritunl](https://registry.terraform.io/providers/atobaum/pritunl/latest)
 
 ## Requirements
 -	[Terraform](https://www.terraform.io/downloads.html) >=0.13.x
@@ -23,13 +23,13 @@
 ## Building The Provider
 
 ```sh
-$ git clone git@github.com:disc/terraform-provider-pritunl
+$ git clone git@github.com:atobaum/terraform-provider-pritunl
 $ make build
 ```
 
 ## Example usage
 
-Take a look at the examples in the [documentation](https://registry.terraform.io/providers/disc/pritunl/latest/docs) of the registry
+Take a look at the examples in the [documentation](https://registry.terraform.io/providers/atobaum/pritunl/latest/docs) of the registry
 or use the following example:
 
 
@@ -38,8 +38,8 @@ or use the following example:
 terraform {
   required_providers {
     pritunl = {
-      source  = "disc/pritunl"
-      version = "0.1.1"
+      source  = "atobaum/pritunl"
+      version = "0.0.5"
     }
   }
 }
