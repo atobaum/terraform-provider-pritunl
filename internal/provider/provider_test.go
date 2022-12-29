@@ -2,13 +2,14 @@ package provider
 
 import (
 	"fmt"
-	"github.com/disc/terraform-provider-pritunl/internal/pritunl"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"os"
 	"strconv"
 	"testing"
+
+	"github.com/atobaum/terraform-provider-pritunl/internal/pritunl"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 )
 
 var providerFactories = map[string]func() (*schema.Provider, error){

@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/disc/terraform-provider-pritunl/internal/provider"
+	"log"
+
+	"github.com/atobaum/terraform-provider-pritunl/internal/provider"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
-	"log"
 )
 
 //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
