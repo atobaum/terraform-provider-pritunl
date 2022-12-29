@@ -25,6 +25,7 @@ require (
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
+	github.com/stretchr/testify v1.8.1
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20220615171555-694bf12d69de // indirect
@@ -32,5 +33,4 @@ require (
 	google.golang.org/api v0.84.0 // indirect
 	google.golang.org/genproto v0.0.0-20220615141314-f1464d18c36b // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
