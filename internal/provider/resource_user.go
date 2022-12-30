@@ -102,7 +102,6 @@ func resourceUser() *schema.Resource {
 			"pin": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				Sensitive:   true,
 				Description: "PIN code, must be six digits if set. Cannot be retrieved back.",
 			},
 			"pin_set": {
