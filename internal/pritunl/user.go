@@ -58,7 +58,7 @@ func (pin Pin) MarshalJSON() ([]byte, error) {
 		if !pin.IsSet {
 			return nil, errors.New("invalid pin: Value is set but IsSet is false")
 		}
-		if pin.Value == "true" {
+		if pin.Value == "unknown" {
 			return json.Marshal(true)
 		}
 		return json.Marshal(pin.Value)
