@@ -155,6 +155,12 @@ func resourceUserRead(_ context.Context, d *schema.ResourceData, meta interface{
 	d.Set("pin_set", user.Pin.IsSet)
 	d.Set("otp_secret", user.OtpSecret)
 
+	if !user.Pin.IsSet && user.Pin.Value == "" {
+		d.Set("pin", nil)
+	} else if d.Get("pin") == "" {
+		d.Set("pin", "unknown")
+	}
+
 	if len(user.Groups) > 0 {
 		groupsList := make([]string, 0)
 
