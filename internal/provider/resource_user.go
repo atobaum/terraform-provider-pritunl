@@ -104,6 +104,12 @@ func resourceUser() *schema.Resource {
 				Optional:    true,
 				Description: "PIN code, must be six digits if set. Cannot be retrieved back.",
 			},
+			"pin_required": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: "Protect unsetting PIN code",
+			},
 			"pin_set": {
 				Type:        schema.TypeBool,
 				Computed:    true,
@@ -266,6 +272,10 @@ func resourceUserUpdate(ctx context.Context, d *schema.ResourceData, meta interf
 		} else {
 			user.Pin = pritunl.Pin{IsSet: false}
 		}
+	}
+
+	if d.Get("pin_required").(bool) && (!user.Pin.IsSet || user.Pin.Value == "") {
+		return diag.Errorf("User Pin should be set")
 	}
 
 	err = apiClient.UpdateUser(d.Id(), user)
