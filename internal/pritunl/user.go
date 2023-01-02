@@ -66,7 +66,7 @@ func (pin Pin) MarshalJSON() ([]byte, error) {
 	return json.Marshal(pin.IsSet)
 }
 
-func (pin Pin) UnmarshalJSON(data []byte) error {
+func (pin *Pin) UnmarshalJSON(data []byte) error {
 	var i interface{}
 	err := json.Unmarshal(data, &i)
 	if err != nil {
@@ -75,7 +75,11 @@ func (pin Pin) UnmarshalJSON(data []byte) error {
 	switch v := i.(type) {
 	case bool:
 		pin.IsSet = v
-		pin.Value = ""
+		if pin.IsSet {
+			pin.Value = "unknown"
+		} else {
+			pin.Value = ""
+		}
 	case string:
 		pin.IsSet = true
 		pin.Value = v
