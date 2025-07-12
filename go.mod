@@ -18,5 +18,6 @@ require (
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/stretchr/testify v1.8.1
+	golang.org/x/crypto v0.17.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
